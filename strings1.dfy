@@ -41,7 +41,7 @@ method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: 
     while i <= (|str1| - k)
     {
         // Get an index from the array position were are at to the array position that is k away and check the substring
-        var temp := isSubstring(str1[i..(i + k)], str2)
+        var temp := isSubstring(str1[i..(i + k)], str2);
         if  temp == true 
         {
             return true;
@@ -58,21 +58,21 @@ method haveCommonKSubstring(k: nat, str1: string, str2: string) returns (found: 
 // Note that every two strings have a common substring of length zero.
 method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
 {
-    nat maxlentgh := 0;
+    nat maxlength := 0;
     var i := 0;
 
     while i <= |str1|
     {
         // Idea is to increment the size of the substring we want to find, if we find a substring then the length of that substring is the new maxlength
-        var temp := haveCommonKSubstring(i, str1, str2)
+        var temp := haveCommonKSubstring(i, str1, str2);
         if  temp == true 
         {
-            maxlentgh = i;
+            maxlength = i;
         }
         else 
         {
             i := i + 1;
         }
     }
-    return maxlentgh;
+    return maxlength;
 }
