@@ -18,6 +18,7 @@ method isPrefix(pre: string, str: string) returns (res:bool)
 method isSubstring(sub: string, str: string) returns (res:bool)
 {
     var i := 0;
+    // Check if sub is a prefix of str[i..] and if not, keep incrementing until i = |str| - |sub|
     while i <= |str| - |sub|
     {
         var temp := isPrefix(sub, str[i..]);
@@ -73,4 +74,24 @@ method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
         i := i + 1;
     }
     return maxlength;
+}
+
+method Main(){
+
+    var res1 := isPrefix("walk", "alk");
+    print(res1);
+    print("\n");
+
+    var res2 := isSubstring("ring", "brings");
+    print(res2);
+    print("\n");
+
+    var res3 := haveCommonKSubstring(0, "what", "kilo");
+    print(res3);
+    print("\n");
+
+    var res4 := maxCommonSubstringLength("sdh", "ksdhkabh");
+    print(res4);
+    print("\n");
+
 }
