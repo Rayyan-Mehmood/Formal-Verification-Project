@@ -75,23 +75,3 @@ method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
     }
     return maxlength;
 }
-
-method Main(){
-
-    var res1 := isPrefix("walk", "alk");
-    print(res1);
-    print("\n");
-
-    var res2 := isSubstring("ring", "brings");
-    print(res2);
-    print("\n");
-
-    var res3 := haveCommonKSubstring(0, "what", "kilo");
-    print(res3);
-    print("\n");
-
-    var res4 := maxCommonSubstringLength("sdh", "ksdhkabh");
-    print(res4);
-    print("\n");
-
-}
