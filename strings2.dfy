@@ -39,13 +39,13 @@ lemma SubstringNegationLemma(sub:string, str:string)
 
 predicate haveCommonKSubstringPred(k:nat, str1:string, str2:string)
 {
-	// if there exists a str1[i..j] which is a substring of str2 and i and j are within bounds
+	// There exists a str1[i..j] which is a substring of str2 and i and j are within bounds
   	exists i,j :: (((j==i+k) && (k<=|str1| && k<=|str2|) && (0<=i<=|str1|-k)) && isSubstringPred(str1[i..j],str2))
 }
 
 predicate haveNotCommonKSubstringPred(k:nat, str1:string, str2:string)
 {
-	// A way to write !isSubstringPred with a forall
+	// A way to write !haveCommonKSubstringPred with a forall
 	// !exists x == forall !x
 	 forall i,j :: !(((j==i+k) && (k<=|str1| && k<=|str2|) && (0<=i<=|str1|-k)) && isSubstringPred(str1[i..j],str2))
 }
