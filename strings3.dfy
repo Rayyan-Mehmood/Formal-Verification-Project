@@ -132,25 +132,34 @@ method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
 	ensures (forall k :: len < k <= |str1| ==> !haveCommonKSubstringPred(k,str1,str2))
 	ensures haveCommonKSubstringPred(len,str1,str2)
 {
-
     var temp := false;
-    var i := |str1|;
-
+    var i := |str1|+1;
+    len := i;
     // Idea is to start the counter at |str1| and decrement until common string is found
     while i > 0
     decreases i
-    invariant 0 <= i <= |str1| 
+    // Invariant to stay within bounds
+    invariant 0 <= i <= |str1| + 1
+    // When temp is true, there is a common sub string of size is
     invariant temp ==> haveCommonKSubstringPred(i, str1, str2)
-    invariant temp ==> (forall k :: i < k <= |str1| ==> !haveCommonKSubstringPred(k,str1,str2))
+    // When temp is false, there is not a common sub string of size i
+    invariant !temp ==> haveNotCommonKSubstringPred(i, str1, str2)
+    // When temp is false, there is no common sub string of sizes >= i
+    invariant !temp ==> (forall k :: i <= k <= |str1| ==> !haveCommonKSubstringPred(k,str1,str2))
+    // When temp is true, there is no common sub string of sizes > i
+    invariant temp ==> (forall k :: (i < k <= |str1|) ==> !haveCommonKSubstringPred(k,str1,str2))
     {
+        i:= i-1;
+        len := i;
         temp := haveCommonKSubstring(i, str1, str2);
-        if  temp == true 
-        {
-            return i;
+        if  temp == true
+        { 
+            break;
         }
-        i := i - 1; 
     }
-    return i;
+    return len;
 }
+
+
 
 
