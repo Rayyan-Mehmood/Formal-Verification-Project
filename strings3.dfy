@@ -140,7 +140,7 @@ method maxCommonSubstringLength(str1: string, str2: string) returns (len:nat)
     decreases i
     // Invariant to stay within bounds
     invariant 0 <= i <= |str1| + 1
-    // When temp is true, there is a common sub string of size is
+    // When temp is true, there is a common sub string of size i
     invariant temp ==> haveCommonKSubstringPred(i, str1, str2)
     // When temp is false, there is not a common sub string of size i
     invariant !temp ==> haveNotCommonKSubstringPred(i, str1, str2)
