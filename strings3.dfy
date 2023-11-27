@@ -53,7 +53,7 @@ method isSubstring(sub: string, str: string) returns (res:bool)
     // Initializing variables
 	var i := 0;
     res := false;
-    // Check if sub is a prefix of str[i..] and if not, keep incrementing until i = |str| - |sub|
+    // Check if sub is a prefix of str[i..] and if not, keep incrementing until i = |str| 
     while i <= |str|
     // Invariant to stay within bounds
     invariant 0 <= i <= |str| + 1
